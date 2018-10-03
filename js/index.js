@@ -9,39 +9,39 @@ var randShout = function() {
 
 // Document Ready
 $(document).ready(function() {
-
     $.fn.extend({
-        animateCss: function(animationName, callback) {
-            var animationEnd = (function(el) {
-            var animations = {
-                animation: 'animationend',
-                OAnimation: 'oAnimationEnd',
-                MozAnimation: 'mozAnimationEnd',
-                WebkitAnimation: 'webkitAnimationEnd',
-            };
+      animateCss: function(animationName, callback) {
+        var animationEnd = (function(el) {
+          var animations = {
+            animation: 'animationend',
+            OAnimation: 'oAnimationEnd',
+            MozAnimation: 'mozAnimationEnd',
+            WebkitAnimation: 'webkitAnimationEnd',
+          };
 
-            for (var t in animations) {
-                if (el.style[t] !== undefined) {
-                    return animations[t];
-                }
+          for (var t in animations) {
+            if (el.style[t] !== undefined) {
+              return animations[t];
             }
-            })(document.createElement('div'));
+          }
+        })(document.createElement('div'));
 
-            this.addClass('animated ' + animationName).one(animationEnd, function() {
-                $(this).removeClass('animated ' + animationName);
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+          $(this).removeClass('animated ' + animationName);
 
-                if (typeof callback === 'function') callback();
-            });
+          if (typeof callback === 'function') callback();
+        });
+
         return this;
-        },
+      },
     });
 
     function randomHandState(el) {
         if (!!Math.floor(Math.random() * 2)) {
-            // $('#' + el).text('5');
+            $('#' + el).text('5');
             $('#' + el).addClass("open");
         } else {
-            // $('#' + el).text('0');
+            $('#' + el).text('0');
             $('#' + el).removeClass("open");
         }
     }
@@ -101,6 +101,7 @@ $(document).ready(function() {
         setTimeout(function(){
 
             computersCall();
+            $('.shoutout-container').animateCss('tada');
             setPlayerTurn(!callResults());
         }, 2000);
     }
@@ -128,8 +129,9 @@ $(document).ready(function() {
     $("a.player").click(function() {
         $(this).toggleClass("open");
         var fingers = $(this);
-        // setHandState(fingers);
+        setHandState(fingers);
     });
+
 
     // what happens when user calls a number
     $('.call>a').click(function() {
@@ -141,6 +143,7 @@ $(document).ready(function() {
         // 
         totalFingerCount();
         // callResults();
+        $('.shoutout-container').animateCss('tada');
         setPlayerTurn(callResults());
     });
 
@@ -148,7 +151,9 @@ $(document).ready(function() {
     $('a.computer-calls').click(function(){
         computersCall();
         // callResults();
+        $('.shoutout-container').animateCss('tada');
         setPlayerTurn(!callResults());
     });
    
+
 });
