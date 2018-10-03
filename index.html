@@ -8,24 +8,27 @@
     <title>10-20 Game</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css'>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="js/index.js"></script>
 </head>
 
 <body>
-	<div class="gamestats">
-		<div id="whosturn">Whos Turn: <br/><strong><span>-</span></strong></div>
-		<div id="totalfingercount">Total Fingers: <br/><strong><span>-</span></strong></div>
-	</div>
+	<div class="main">
+		<div class="gamestats">
+			<div id="whosturn">Whos Turn: <br/><strong><span>-</span></strong></div>
+			<!-- <div id="totalfingercount">Total Fingers: <br/><strong><span>-</span></strong></div> -->
+		</div>
+
         <h5>Computer</h5>
 		<a href="#" class="btn btn-block btn-warning btn-lg btn-info computer-calls">PLAY</a>
         <div class="row">	
-	        <a id="com-left" href="#" class="com btn btn-block btn-lg finger-count">0</a>
-	        <a id="com-right" href="#" class="com btn btn-block btn-lg finger-count">0</a>
+	        <a id="com-left" href="#" class="com btn btn-block btn-lg finger-count animated"></a>
+	        <a id="com-right" href="#" class="com btn btn-block btn-lg finger-count animated"></a>
         </div>
         <!-- <hr> -->
 		<!-- <div class="container"> -->
-	        <div class="shoutout-container">
+	        <div class="shoutout-container tada animated">
 	        	<h1 id="shoutout" class="total-count">?</h1>
 	        	<div class="speech-cpu"></div>
 	        	<div class="speech-player"></div>
@@ -41,9 +44,10 @@
 			<a href="#" class="btn btn-block btn-warning">20</a>
 			<!-- <hr> -->
 		</div>
-        <div class="row">
-	        <a id="player-left" href="#" class="player btn btn-block btn-lg finger-count">0</a>
-	        <a id="player-right" href="#" class="player btn btn-block btn-lg finger-count">0</a>
+        <div class="row tada">
+	        <a id="player-left" href="#" class="player btn btn-block btn-lg finger-count bounceInLeft animated"></a>
+	        <a id="player-right" href="#" class="player btn btn-block btn-lg finger-count bounceInRight animated"></a>
 		</div>
+	</div>
 </body>
 </html>

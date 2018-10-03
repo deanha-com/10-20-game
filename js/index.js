@@ -10,12 +10,38 @@ var randShout = function() {
 // Document Ready
 $(document).ready(function() {
 
+    $.fn.extend({
+        animateCss: function(animationName, callback) {
+            var animationEnd = (function(el) {
+            var animations = {
+                animation: 'animationend',
+                OAnimation: 'oAnimationEnd',
+                MozAnimation: 'mozAnimationEnd',
+                WebkitAnimation: 'webkitAnimationEnd',
+            };
+
+            for (var t in animations) {
+                if (el.style[t] !== undefined) {
+                    return animations[t];
+                }
+            }
+            })(document.createElement('div'));
+
+            this.addClass('animated ' + animationName).one(animationEnd, function() {
+                $(this).removeClass('animated ' + animationName);
+
+                if (typeof callback === 'function') callback();
+            });
+        return this;
+        },
+    });
+
     function randomHandState(el) {
         if (!!Math.floor(Math.random() * 2)) {
-            $('#' + el).text('5');
+            // $('#' + el).text('5');
             $('#' + el).addClass("open");
         } else {
-            $('#' + el).text('0');
+            // $('#' + el).text('0');
             $('#' + el).removeClass("open");
         }
     }
@@ -65,7 +91,6 @@ $(document).ready(function() {
             console.log('false - no match:' + wins + 'wins');
             return false;
         }
-        
 
         console.warn(shoutNum);
         console.warn(totalFingerCount());
@@ -84,7 +109,7 @@ $(document).ready(function() {
         if (check) {
             $('#whosturn span').text('Player');
             $('.computer-calls').hide();
-            $('.call').show();
+            $('.call').fadeIn();
             $('.speech-player').hide();
             $('.speech-cpu').show();
 
@@ -103,9 +128,8 @@ $(document).ready(function() {
     $("a.player").click(function() {
         $(this).toggleClass("open");
         var fingers = $(this);
-        setHandState(fingers);
+        // setHandState(fingers);
     });
-
 
     // what happens when user calls a number
     $('.call>a').click(function() {
@@ -127,5 +151,4 @@ $(document).ready(function() {
         setPlayerTurn(!callResults());
     });
    
-
 });
