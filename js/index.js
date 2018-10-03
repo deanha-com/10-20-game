@@ -78,7 +78,7 @@ $(document).ready(function() {
     function callResults() {
         var shoutNum = parseInt($(".total-count").text());
         if (shoutNum == totalFingerCount()) {
-            $(".status").html('<span class="btn btn-success">HIT !</span>');
+            $(".status").html('<span class="btn btn-success">Hit!</span>');
             wins += 1;
             console.log('true - correct match:' + wins + 'wins');
             if (wins == 2) {
@@ -86,7 +86,7 @@ $(document).ready(function() {
             }
             return true;
         } else {
-            $(".status").html('<span class="btn btn-danger"">missed</span>');
+            $(".status").html('<span class="btn btn-danger"">Missed!</span>');
             wins = 0;
             console.log('false - no match:' + wins + 'wins');
             return false;
