@@ -12,41 +12,42 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="js/index.js"></script>
 </head>
-
 <body>
-	<div class="main">	
-		<div class="gamestats">
-			<div id="whosturn">Whos Turn: <br/><strong><span>-</span></strong></div>
-			<!-- <div id="totalfingercount">Total Fingers: <br/><strong><span>-</span></strong></div> -->
+	<div class="main noselect">	
+		<div class="gamestats turns">
+			<div id="whosturn">Whos Turn: <strong><span>-</span></strong></div>
+			<div id="totalfingercount">Total Fingers <strong><span>-</span></strong></div>
 		</div>
 		<div class="gameplay">
 			
-	        <p class="player-names">Computer</p>
-			<a href="#" class="btn btn-block btn-warning btn-lg btn-info computer-calls">PLAY</a>
-	        <div class="row">	
+	        <p class="player-names com">Computer</p>
+	        <p class="player-names player">Player 1</p>
+			<a href="#" class="btn btn-block btn-call btn-lg computer-calls">PLAY</a>
+
+	        <div class="com-hands row">	
 		        <a id="com-left" href="#" class="com btn btn-block btn-lg finger-count animated">0</a>
 		        <a id="com-right" href="#" class="com btn btn-block btn-lg finger-count animated">0</a>
 	        </div>
-	        <!-- <hr> -->
-			<!-- <div class="container"> -->
-		        <div class="shoutout-container">
-		        	<h1 id="shoutout" class="total-count">?</h1>
-		        </div>
-			<!-- </div> -->
-	        <div class="status"></div>
+
+	        <div class="shoutout-container">
+	        	<h1 id="shoutout" class="total-count">?</h1>
+		        <div class="status"></div>
+	        </div>
+	        
+
 			<div class="call">
-				<a href="#" class="btn btn-block btn-warning">0</a>
-				<a href="#" class="btn btn-block btn-warning">5</a>
-				<a href="#" class="btn btn-block btn-warning">10</a>
-				<a href="#" class="btn btn-block btn-warning">15</a>
-				<a href="#" class="btn btn-block btn-warning">20</a>
-				<!-- <hr> -->
+				<a href="#" class="btn btn-block btn-call">0</a>
+				<a href="#" class="btn btn-block btn-call">5</a>
+				<a href="#" class="btn btn-block btn-call">10</a>
+				<a href="#" class="btn btn-block btn-call">15</a>
+				<a href="#" class="btn btn-block btn-call">20</a>
 			</div>
+
 	        <div class="player-hands row tada">
-		        <a id="player-left" href="#" class="player btn btn-block btn-lg finger-count bounceInLeft animated">0</a>
-		        <a id="player-right" href="#" class="player btn btn-block btn-lg finger-count bounceInRight animated">0</a>
+		        <a id="player-left" href="#" class="player btn btn-block btn-lg finger-count">0</a>
+		        <a id="player-right" href="#" class="player btn btn-block btn-lg finger-count">0</a>
 			</div>
-	        <p class="player-names">Player 1</p>
+
 		</div>
 	</div>
 </body>

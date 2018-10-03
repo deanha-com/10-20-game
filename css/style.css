@@ -1,3 +1,16 @@
+/** {
+    box-sizing: border-box;
+}*/
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 body {
   text-align: center;
   background: url('https://www.toptal.com/designers/subtlepatterns/patterns/geometry.png');
@@ -5,10 +18,47 @@ body {
   margin:  0;
 }
 
+.gameplay {
+    box-sizing: border-box;
+    height: 100vh;
+}
+
 .player-names {
     font-size: 22px;
-    background: #f3f3f3;
+    background: #efefef;
     border-radius: 50px;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+}
+
+.player-names.com {
+    top: 5px;
+}
+
+.player-names.player {   
+    bottom: 5px;
+}
+
+.player-names.playing:after{
+    content: '►';
+    position: absolute;
+    right: 5px;
+    background: #ffde3b;
+    color: #ffde3b;
+    padding: 0px;
+    font-size: 14px;
+    border-radius: 20px;
+    height: 25px;
+    width: 25px;
+    margin-top: 4px;
+    border: 2px solid #fff;
+}
+
+a.btn.btn-block.btn-call {
+    padding: 15px 7%;
+    background: #b9b9b9;
+    color: #fff;
 }
 
 .main {
@@ -20,23 +70,42 @@ body {
 .finger-count span {
     display: none !important;
 }
-
+/*
 .gamestats {
     position: relative;
     box-sizing: border-box;
-    width: 150px;
     border: solid 2px #00BCD4;
     background: rgba(0, 188, 212, 0.1);
     font-size: 14px;
     text-align: center;
     padding: 5px 10px;
     margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 45px;
+    margin-bottom: 0;
     border-radius: 30px;
 }
+*/
 
-#whosturn, #totalfingercount {
+.gamestats.turns {
+    position: absolute;
+    border-radius: 50px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left: 0;
+    display: block;
+    background: #2196F3;
+    color: #ffffff;
+    top: 50%;
+    right: 0;
+    width: 60px;
+    padding: 5px 10px;
+    padding-right: 5px;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+#whosturn {
+    display: none;
 }
 
 #player-left {
@@ -127,14 +196,32 @@ body {
 }
 
 .shoutout-container {
-    display: inline-block;
-    width: 150px;
-    height: 80px;
+    display: block;
+    width: 30%;
     border: 5px solid #a2e1fd;
     border-radius: 50px;
     background: #04a9f4;
     color: #fff;
-    margin-bottom: 10px;
+    position: absolute;
+    top: 40%;
+    left: calc(50% - 15%);
+}
+
+.com-hands.row {
+    display: block;
+    height: 150px;
+    position: absolute;
+    top: 45px;
+    width: 100vw;
+}
+
+.player-hands.row {
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 2%;
+    width: 100vw;
+    height: 180px;
 }
 
 #shoutout {
@@ -142,13 +229,14 @@ body {
 }
 
 .player-hands {
-    transform: scale(0.7);
+    transform: scale(0.85);
 }
 
 .status {
     display: inline-block;
     position: absolute;
-    right: calc(50% - 130px);
+    left: calc(50% + 35px);
+    top: 0;
 }
 
 .status span {
@@ -159,4 +247,18 @@ body {
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+.call {
+    position: absolute;
+    width: 100vw;
+    top: calc(50% + 13%);
+}
+
+a.computer-calls {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }

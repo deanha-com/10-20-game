@@ -36,6 +36,13 @@ $(document).ready(function() {
       },
     });
 
+    // Run animation
+    
+    $('#player-left').animateCss('bounceInLeft');
+    $('#player-right').animateCss('bounceInRight');
+    // $('#com-left').animateCss('fadeInDown');
+    // $('#com-right').animateCss('fadeInDown');
+
     function randomHandState(el) {
         if (!!Math.floor(Math.random() * 2)) {
             $('#' + el).text('5');
@@ -86,7 +93,7 @@ $(document).ready(function() {
             }
             return true;
         } else {
-            $(".status").html('<span class="btn btn-danger"">Missed!</span>');
+            $(".status").html('<span class="btn btn-danger">Missed!</span>');
             wins = 0;
             console.log('false - no match:' + wins + 'wins');
             return false;
@@ -109,20 +116,26 @@ $(document).ready(function() {
     function setPlayerTurn(check) {
         if (check) {
             $('#whosturn span').text('Player');
+            $('.player-names.player').addClass('playing');
+            $('.player-names.com').removeClass('playing');
             $('.computer-calls').hide();
+
             $('.call').fadeIn();
             $('.speech-player').hide();
             $('.speech-cpu').show();
 
         } else {
             $('#whosturn span').text('Computer');
+            $('.player-names.com').addClass('playing');
+            $('.player-names.player').removeClass('playing');
             $('.call').hide();
-            $('.computer-calls').show();
+            $('.computer-calls').fadeIn();
             $('.speech-cpu').hide();
             $('.speech-player').show();
             cpuAutoCall();
         }
     }
+    
 
     // ----------------------------------------------
     // open/close when user clicks hand
