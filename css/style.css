@@ -262,3 +262,51 @@ a.computer-calls {
     left: 50%;
     transform: translate(-50%, 0%);
 }
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+*/
+
+.intro {
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding-top: 20%;
+    background: url(https://www.toptal.com/designers/subtlepatterns/patterns/sun-pattern.png);
+}
+
+.intro .container {
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.intro .container h1{
+    margin-bottom: 2em;
+    font-weight: 100;
+    font-family: 'Monoton', cursive;
+}
+
+#startgame-btn {
+    font-size: 30px;
+    padding: 15px 20px;
+    border: solid 4px #a5dcf5;
+    border-radius: 45px;
+    font-weight: 800;
+    color: #fff;
+    background: #03A9F4;
+
+}

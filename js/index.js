@@ -7,6 +7,15 @@ var randShout = function() {
     return myArray[Math.floor(Math.random() * myArray.length)];
 };
 
+
+function startGame() {
+        $('.intro').parent().addClass('zoomOut animated');
+        $('#player-left').animateCss('bounceInLeft');
+        $('#player-right').animateCss('bounceInRight');
+        // $('#com-left').animateCss('fadeInDown');
+        // $('#com-right').animateCss('fadeInDown');        
+}
+
 // Document Ready
 $(document).ready(function() {
     $.fn.extend({
@@ -36,12 +45,15 @@ $(document).ready(function() {
       },
     });
 
-    // Run animation
-    
-    $('#player-left').animateCss('bounceInLeft');
-    $('#player-right').animateCss('bounceInRight');
-    // $('#com-left').animateCss('fadeInDown');
-    // $('#com-right').animateCss('fadeInDown');
+    // Run animations
+    function startGame() {
+        $('.intro').parent().addClass('zoomOut animated');
+        $('#player-left').animateCss('bounceInLeft');
+        $('#player-right').animateCss('bounceInRight');
+        // $('#com-left').animateCss('fadeInDown');
+        // $('#com-right').animateCss('fadeInDown');
+        
+    }
 
     function randomHandState(el) {
         if (!!Math.floor(Math.random() * 2)) {
