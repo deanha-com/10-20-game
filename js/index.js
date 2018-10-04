@@ -79,14 +79,22 @@ $(document).ready(function() {
     function computersCall() {
         $('#shoutout').text(randShout());
         if ($('#shoutout').text() == 20) {
-            console.warn('CPU: Both hand needs to be OPENED');
+            console.warn('CPU: BOTH hand needs to be OPENED');
             openHandState('com-left');
             openHandState('com-right');
         }
         if ($('#shoutout').text() == 0) {
-            console.warn('CPU: Both hand needs to be CLOSED');
+            console.warn('CPU: BOTH hand needs to be CLOSED');
             closeHandState('com-left');
             closeHandState('com-right');
+        }
+        if ($('#shoutout').text() == 5) {
+            console.warn('CPU: ONE hand needs to be CLOSED');
+            closeHandState('com-left');
+        }
+        if ($('#shoutout').text() == 15) {
+            console.warn('CPU: ONE hand needs to be OPENED');
+            openHandState('com-left');
         }
         // else {
         //     randomHandState('com-left');
@@ -127,10 +135,11 @@ $(document).ready(function() {
                 toggleWinState();
                 // alert($('#whosturn span').text() + ' WINS!');
                 if ($('#whosturn span').text() == 'Computer') {
+                    $('section.win-state').css('background','#F44336');
                     $('.end-greet').text('Booooo..');
                     $('.won-lost').text('LOST');
-                    $('section.win-state').css('background','#F44336');
                 } else {
+                    $('section.win-state').css('background','#8bc34a');
                     $('.end-greet').text('Congrats!');
                     $('.won-lost').text('WON');
                 }
@@ -152,7 +161,11 @@ $(document).ready(function() {
         setTimeout(function(){
 
             computersCall();
-            $('.shoutout-container').animateCss('tada');
+            if (wins == 1) {
+                $('.shoutout-container').animateCss('tada');
+            } else {
+                $('.shoutout-container').animateCss('bounceInDown');
+            }
             setPlayerTurn(!callResults());
         }, 2000);
     }
@@ -200,7 +213,11 @@ $(document).ready(function() {
         // 
         totalFingerCount();
         // callResults();
-        $('.shoutout-container').animateCss('tada');
+        if (wins == 1) {
+                $('.shoutout-container').animateCss('tada');
+        } else {
+            $('.shoutout-container').animateCss('bounceInUp');
+        }
         setPlayerTurn(callResults());
     });
 
