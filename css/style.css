@@ -1,7 +1,7 @@
 /** {
     box-sizing: border-box;
 }*/
-.noselect {
+.noselect, a {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -43,9 +43,9 @@ body {
 .player-names.playing:after{
     content: '►';
     position: absolute;
-    right: 5px;
-    background: #ffde3b;
-    color: #ffde3b;
+    left: 5px;
+    background: #dd14ff;
+    color: #dd14ff;
     padding: 0px;
     font-size: 14px;
     border-radius: 20px;
@@ -102,6 +102,10 @@ a.btn.btn-block.btn-call {
     padding-right: 5px;
     font-size: 13px;
     line-height: 13px;
+}
+
+.finger-count {
+    font-size: 0;
 }
 
 #whosturn {
@@ -262,30 +266,16 @@ a.computer-calls {
     left: 50%;
     transform: translate(-50%, 0%);
 }
-
-
-
-
-
-
-
-
-
-
-
 /*
 
-
-
 */
-
 .intro {
     position: fixed;
     margin: 0 auto;
     width: 100%;
     height: 100%;
     z-index: 1;
-    padding-top: 20%;
+    padding-top: 10%;
     background: url(https://www.toptal.com/designers/subtlepatterns/patterns/sun-pattern.png);
 }
 
@@ -300,7 +290,7 @@ a.computer-calls {
     font-family: 'Monoton', cursive;
 }
 
-#startgame-btn {
+#startgame-btn, .big-btn{
     font-size: 30px;
     padding: 15px 20px;
     border: solid 4px #a5dcf5;
@@ -309,4 +299,23 @@ a.computer-calls {
     color: #fff;
     background: #03A9F4;
 
+}
+
+section.win-state {
+    display: none;
+    background: #FFEB3B;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+section.win-state.active {
+    display: block;
+}
+
+
+.win-box {
+    padding: 15px;
+    margin-top: 15%;
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
     <title>10-20 Game</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css'>
     <link rel="stylesheet" href="css/style.css">
@@ -24,14 +26,15 @@
 		</div>	
 	</section>
 
+
 	<section>
 		<div class="main noselect">	
 			<div class="gamestats turns">
 				<div id="whosturn">Whos Turn: <strong><span>-</span></strong></div>
 				<div id="totalfingercount">Total Fingers <strong><span>-</span></strong></div>
 			</div>
+
 			<div class="gameplay">
-				
 		        <p class="player-names com">Computer</p>
 		        <p class="player-names player">Player 1</p>
 				<a href="#" class="btn btn-block btn-call btn-lg computer-calls">PLAY</a>
@@ -61,6 +64,15 @@
 				</div>
 
 			</div>
+		</div>
+	</section>
+	<section class="win-state noselect">
+		<div class="win-box">
+			<h5>Congrats!</h5>
+			 <br/>
+			 <h2>YOU WON!</h2>
+			 <br/>
+			<p><a href="#" class="big-btn" onclick="toggleWinState()">PLAY AGAIN</a></p>
 		</div>
 	</section>
 </body>

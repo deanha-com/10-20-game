@@ -9,11 +9,17 @@ var randShout = function() {
 
 
 function startGame() {
-        $('.intro').parent().addClass('zoomOut animated');
+        $('.intro').parent().addClass('slideOutLeft animated');
+        $('.main').parent().addClass('fadeIn animated');
         $('#player-left').animateCss('bounceInLeft');
         $('#player-right').animateCss('bounceInRight');
         // $('#com-left').animateCss('fadeInDown');
         // $('#com-right').animateCss('fadeInDown');        
+}
+
+function toggleWinState() {
+    $('section.win-state').toggleClass('active');
+    $('section.win-state').animateCss('bounceInUp');
 }
 
 // Document Ready
@@ -44,16 +50,6 @@ $(document).ready(function() {
         return this;
       },
     });
-
-    // Run animations
-    function startGame() {
-        $('.intro').parent().addClass('zoomOut animated');
-        $('#player-left').animateCss('bounceInLeft');
-        $('#player-right').animateCss('bounceInRight');
-        // $('#com-left').animateCss('fadeInDown');
-        // $('#com-right').animateCss('fadeInDown');
-        
-    }
 
     function randomHandState(el) {
         if (!!Math.floor(Math.random() * 2)) {
@@ -101,7 +97,8 @@ $(document).ready(function() {
             wins += 1;
             console.log('true - correct match:' + wins + 'wins');
             if (wins == 2) {
-                alert($('#whosturn span').text() + ' WINS!');
+                toggleWinState();
+                // alert($('#whosturn span').text() + ' WINS!');
             }
             return true;
         } else {
@@ -141,7 +138,7 @@ $(document).ready(function() {
             $('.player-names.com').addClass('playing');
             $('.player-names.player').removeClass('playing');
             $('.call').hide();
-            $('.computer-calls').fadeIn();
+            // $('.computer-calls').fadeIn();
             $('.speech-cpu').hide();
             $('.speech-player').show();
             cpuAutoCall();
