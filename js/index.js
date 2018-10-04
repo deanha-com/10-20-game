@@ -51,6 +51,10 @@ $(document).ready(function() {
       },
     });
 
+    $('a').click(function(event) {
+        event.preventDefault();
+    });
+
     function randomHandState(el) {
         if (!!Math.floor(Math.random() * 2)) {
             $('#' + el).text('5');
@@ -61,10 +65,33 @@ $(document).ready(function() {
         }
     }
 
+    function openHandState(el) {
+        $('#' + el).text('5');
+        $('#' + el).addClass("open");
+        console.log('woooorking');
+    }
+
+    function closeHandState(el) {
+        $('#' + el).text('0');
+        $('#' + el).removeClass("open");
+    }
+
     function computersCall() {
-        randomHandState('com-left');
-        randomHandState('com-right');
         $('#shoutout').text(randShout());
+        if ($('#shoutout').text() == 20) {
+            console.warn('CPU: Both hand needs to be OPENED');
+            openHandState('com-left');
+            openHandState('com-right');
+        }
+        if ($('#shoutout').text() == 0) {
+            console.warn('CPU: Both hand needs to be CLOSED');
+            closeHandState('com-left');
+            closeHandState('com-right');
+        }
+        // else {
+        //     randomHandState('com-left');
+        //     randomHandState('com-right');
+        // }
         totalFingerCount();
     }
 
@@ -99,6 +126,14 @@ $(document).ready(function() {
             if (wins == 2) {
                 toggleWinState();
                 // alert($('#whosturn span').text() + ' WINS!');
+                if ($('#whosturn span').text() == 'Computer') {
+                    $('.end-greet').text('Booooo..');
+                    $('.won-lost').text('LOST');
+                    $('section.win-state').css('background','#F44336');
+                } else {
+                    $('.end-greet').text('Congrats!');
+                    $('.won-lost').text('WON');
+                }
             }
             return true;
         } else {
