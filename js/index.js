@@ -158,16 +158,19 @@ $(document).ready(function() {
 
     function cpuAutoCall(){
         console.log('auto calling');
+        var dur = 2000;
         setTimeout(function(){
 
+            $('.countdown').addClass('countnow').css('animation','mymove '+dur+'ms');
             computersCall();
+            $('.countdown').removeClass('countnow');
             if (wins == 1) {
                 $('.shoutout-container').animateCss('tada');
             } else {
                 $('.shoutout-container').animateCss('bounceInDown');
             }
             setPlayerTurn(!callResults());
-        }, 2000);
+        }, dur);
     }
 
     function setPlayerTurn(check) {
@@ -192,7 +195,6 @@ $(document).ready(function() {
             cpuAutoCall();
         }
     }
-    
 
     // ----------------------------------------------
     // open/close when user clicks hand

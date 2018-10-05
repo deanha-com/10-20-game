@@ -89,19 +89,16 @@ a.btn.btn-block.btn-call {
 .gamestats.turns {
     position: absolute;
     border-radius: 50px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     border-left: 0;
     display: block;
-    background: #2196F3;
+    background: #3F51B5;
     color: #ffffff;
-    top: 50%;
-    right: 0;
-    width: 60px;
-    padding: 5px 10px;
+    width: 22px;
+    padding: 5px;
     padding-right: 5px;
     font-size: 13px;
-    line-height: 13px;
+    right: 0px;
+    bottom: -5px;
 }
 
 .finger-count {
@@ -315,8 +312,36 @@ section.win-state.active {
     display: block;
 }
 
-
 .win-box {
     padding: 15px;
     margin-top: 15%;
+}
+
+/* Countdown Progress Bar */
+.countdown{
+    margin-top: 40px;
+    padding:0px;
+    border-radius: 10px;
+    width: 0%;
+    height: 15px;
+    background: green;
+    position: relative;
+    }
+
+.countnow {
+    -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+    0% {width: 0%;}
+    45% {width: 50%; background-color: gold;}
+    100% {width: 100%; background-color: red;}
+}
+
+@keyframes mymove {
+    0% {width: 1%;}
+    75% {background-color: gold;}
+    100% {width: 100%; background-color: red;}
 }

@@ -16,7 +16,6 @@
     <script src="js/index.js"></script>
 </head>
 <body>
-
 	<section>
 		<div class="intro noselect">
 			<div class="container">
@@ -29,13 +28,10 @@
 
 	<section>
 		<div class="main noselect">	
-			<div class="gamestats turns">
-				<div id="whosturn">Whos Turn: <strong><span>-</span></strong></div>
-				<div id="totalfingercount">Total Fingers <strong><span>-</span></strong></div>
-			</div>
 
 			<div class="gameplay">
 		        <p class="player-names com">Computer</p>
+		        <div class="countdown"></div>
 		        <p class="player-names player">Player 1</p>
 				<a href="" class="btn btn-block btn-call btn-lg computer-calls">PLAY</a>
 
@@ -47,9 +43,12 @@
 		        <div class="shoutout-container">
 		        	<h1 id="shoutout" class="total-count">?</h1>
 			        <div class="status"></div>
+					<div class="gamestats turns">
+						<div id="whosturn">Whos Turn: <strong><span>-</span></strong></div>
+						<div id="totalfingercount"><strong><span>-</span></strong></div>
+					</div>
 		        </div>
 		        
-
 				<div class="call">
 					<a href="" class="btn btn-block btn-call">0</a>
 					<a href="" class="btn btn-block btn-call">5</a>
