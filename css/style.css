@@ -18,6 +18,12 @@ body {
   margin:  0;
 }
 
+nav {
+    height: 70px;
+    position: fixed;
+    width: 100%;
+}
+
 .gameplay {
     box-sizing: border-box;
     height: 100vh;
@@ -33,7 +39,7 @@ body {
 }
 
 .player-names.com {
-    top: 5px;
+    top: 35px;
 }
 
 .player-names.player {   
@@ -62,8 +68,8 @@ a.btn.btn-block.btn-call {
 }
 
 .main {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -212,7 +218,7 @@ a.btn.btn-block.btn-call {
     display: block;
     height: 150px;
     position: absolute;
-    top: 45px;
+/*    top: 45px;*/
     width: 100vw;
 }
 
@@ -331,6 +337,29 @@ section.win-state.active {
 .countnow {
     -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+}
+
+.games-score-board>div{
+    float: left;
+    width:50%;
+    color: #fff;
+    font-weight: 600;
+}
+
+.score:before {
+    content: "SCORE: ";
+}
+
+.score {
+ background: #FFC107;
+}
+
+.wins:before {
+    content: "WINS: ";
+}
+
+.wins {
+ background: #00BCD4;
 }
 
 /* Safari 4.0 - 8.0 */

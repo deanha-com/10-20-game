@@ -7,6 +7,10 @@ var randShout = function() {
     return myArray[Math.floor(Math.random() * myArray.length)];
 };
 
+function inPlay() {
+    return $('#whosturn span').text() + " /// " + wins;
+}
+
 
 function startGame() {
         $('.intro').parent().addClass('slideOutLeft animated');
@@ -68,7 +72,6 @@ $(document).ready(function() {
     function openHandState(el) {
         $('#' + el).text('5');
         $('#' + el).addClass("open");
-        console.log('woooorking');
     }
 
     function closeHandState(el) {
@@ -79,21 +82,21 @@ $(document).ready(function() {
     function computersCall() {
         $('#shoutout').text(randShout());
         if ($('#shoutout').text() == 20) {
-            console.warn('CPU: BOTH hand needs to be OPENED');
+            // console.warn('CPU: BOTH hand needs to be OPENED');
             openHandState('com-left');
             openHandState('com-right');
         }
         if ($('#shoutout').text() == 0) {
-            console.warn('CPU: BOTH hand needs to be CLOSED');
+            // console.warn('CPU: BOTH hand needs to be CLOSED');
             closeHandState('com-left');
             closeHandState('com-right');
         }
         if ($('#shoutout').text() == 5) {
-            console.warn('CPU: ONE hand needs to be CLOSED');
+            // console.warn('CPU: ONE hand needs to be CLOSED');
             closeHandState('com-left');
         }
         if ($('#shoutout').text() == 15) {
-            console.warn('CPU: ONE hand needs to be OPENED');
+            // console.warn('CPU: ONE hand needs to be OPENED');
             openHandState('com-left');
         }
         // else {
@@ -129,6 +132,11 @@ $(document).ready(function() {
         var shoutNum = parseInt($(".total-count").text());
         if (shoutNum == totalFingerCount()) {
             $(".status").html('<span class="btn btn-success">Hit!</span>');
+
+            // add points to the player score
+            var playerscore = $('div.score').text();
+            $('div.score').text(parseInt(playerscore)+totalFingerCount());
+
             wins += 1;
             console.log('true - correct match:' + wins + 'wins');
             if (wins == 2) {
@@ -136,13 +144,24 @@ $(document).ready(function() {
                 // alert($('#whosturn span').text() + ' WINS!');
                 if ($('#whosturn span').text() == 'Computer') {
                     $('section.win-state').css('background','#F44336');
-                    $('.end-greet').text('Booooo..');
+                    $('.end-greet').text('Ooops..');
                     $('.won-lost').text('LOST');
                 } else {
                     $('section.win-state').css('background','#8bc34a');
                     $('.end-greet').text('Congrats!');
                     $('.won-lost').text('WON');
+
+                    // add wins to the player win streaks
+                    var playerwinstreak = $('div.wins>span').text();
+                    if (playerwinstreak < 4) {
+                        $('div.wins>span').text(parseInt(playerwinstreak)+1);
+                    } else {
+                        // Game over once you reach 5 games.
+                        $('div.wins>span').text(parseInt(playerwinstreak)+1);
+                        alert('CONGRATS! YOU COMPLETED LEVEL 1..!');
+                    }
                 }
+                wins = 0;
             }
             return true;
         } else {
@@ -156,14 +175,14 @@ $(document).ready(function() {
         console.warn(totalFingerCount());
     }
 
-    function cpuAutoCall(){
-        console.log('auto calling');
+    function cpuAutoPlay(){
+        // console.log('cpu auto play');
         var dur = 2000;
         setTimeout(function(){
 
-            $('.countdown').addClass('countnow').css('animation','mymove '+dur+'ms');
+            // $('.countdown').addClass('countnow').css('animation','mymove '+dur+'ms');
             computersCall();
-            $('.countdown').removeClass('countnow');
+            // $('.countdown').removeClass('countnow');
             if (wins == 1) {
                 $('.shoutout-container').animateCss('tada');
             } else {
@@ -183,6 +202,7 @@ $(document).ready(function() {
             $('.call').fadeIn();
             $('.speech-player').hide();
             $('.speech-cpu').show();
+            console.log('PLAYER SCORE:'+wins);
 
         } else {
             $('#whosturn span').text('Computer');
@@ -192,13 +212,15 @@ $(document).ready(function() {
             // $('.computer-calls').fadeIn();
             $('.speech-cpu').hide();
             $('.speech-player').show();
-            cpuAutoCall();
+            cpuAutoPlay();
+            console.log('COMPUTER SCORE:'+wins);
         }
+        inPlay();
     }
 
     // ----------------------------------------------
     // open/close when user clicks hand
-    $("a.player").click(function() {
+    $("p.player").click(function() {
         $(this).toggleClass("open");
         var fingers = $(this);
         setHandState(fingers);
@@ -223,7 +245,7 @@ $(document).ready(function() {
         setPlayerTurn(callResults());
     });
 
-    // when its cpu turn we neet to click the play button
+    // when its cpu turn, we need to click the play button.
     $('a.computer-calls').click(function(){
         computersCall();
         // callResults();
