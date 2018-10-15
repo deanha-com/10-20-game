@@ -3,22 +3,39 @@ var fingers;
 var wins = 0;
 var playersTurn = true;
 var myArray = [0, 5, 10, 15, 20];
+var playername = localStorage.getItem("playerName");
 var randShout = function() {
     return myArray[Math.floor(Math.random() * myArray.length)];
-};
+}
+
+function setScore(x) {
+    localStorage.setItem('playerScore', x);
+}
+
+function getScore() {
+    currentScore = localStorage.getItem("playerScore");
+}
+
+function setPlayerName() {
+    var playerName = prompt("Please enter your name", "Player 1");
+    if (playerName != null) {
+        localStorage.setItem('playerName', playerName);
+        $(".player-names.player").text(playerName);
+    }
+}
 
 function inPlay() {
     return $('#whosturn span').text() + " /// " + wins;
 }
-
 
 function startGame() {
         $('.intro').parent().addClass('slideOutLeft animated');
         $('.main').parent().addClass('fadeIn animated');
         $('#player-left').animateCss('bounceInLeft');
         $('#player-right').animateCss('bounceInRight');
-        // $('#com-left').animateCss('fadeInDown');
-        // $('#com-right').animateCss('fadeInDown');        
+        if ( playername != null ) {
+            $(".player-names.player").text(playername);
+        }
 }
 
 function toggleWinState() {
@@ -153,7 +170,7 @@ $(document).ready(function() {
 
                     // add wins to the player win streaks
                     var playerwinstreak = $('div.wins>span').text();
-                    if (playerwinstreak < 4) {
+                    if (playerwinstreak < 2) {
                         $('div.wins>span').text(parseInt(playerwinstreak)+1);
                     } else {
                         // Game over once you reach 5 games.
@@ -177,7 +194,7 @@ $(document).ready(function() {
 
     function cpuAutoPlay(){
         // console.log('cpu auto play');
-        var dur = 2000;
+        var dur = 2500;
         setTimeout(function(){
 
             // $('.countdown').addClass('countnow').css('animation','mymove '+dur+'ms');
@@ -220,7 +237,7 @@ $(document).ready(function() {
 
     // ----------------------------------------------
     // open/close when user clicks hand
-    $("p.player").click(function() {
+    $(".player-hands p").click(function() {
         $(this).toggleClass("open");
         var fingers = $(this);
         setHandState(fingers);
@@ -252,6 +269,5 @@ $(document).ready(function() {
         $('.shoutout-container').animateCss('tada');
         setPlayerTurn(!callResults());
     });
-   
 
 });
