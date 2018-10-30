@@ -4,6 +4,7 @@ var wins = 0;
 var playersTurn = true;
 var myArray = [0, 5, 10, 15, 20];
 var playername = localStorage.getItem("playerName");
+var currentScore;
 var randShout = function() {
     return myArray[Math.floor(Math.random() * myArray.length)];
 }
@@ -13,7 +14,7 @@ function setScore(x) {
 }
 
 function getScore() {
-    currentScore = localStorage.getItem("playerScore");
+    return currentScore = localStorage.getItem("playerScore");
 }
 
 function setPlayerName() {
@@ -36,6 +37,10 @@ function startGame() {
         if ( playername != null ) {
             $(".player-names.player").text(playername);
         }
+        $('div.score').text(getScore());
+        // if ( getScore === null ) {
+        //     getScore(0);
+        // }
 }
 
 function toggleWinState() {
@@ -151,8 +156,9 @@ $(document).ready(function() {
             $(".status").html('<span class="btn btn-success">Hit!</span>');
 
             // add points to the player score
-            var playerscore = $('div.score').text();
-            $('div.score').text(parseInt(playerscore)+totalFingerCount());
+            var playerscore = parseInt(getScore()) + totalFingerCount();
+            setScore(playerscore);
+            $('div.score').text(playerscore);
 
             wins += 1;
             console.log('true - correct match:' + wins + 'wins');
